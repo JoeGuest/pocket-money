@@ -7,6 +7,6 @@ class ParentController < ApplicationController
   end
   
   def store
-    
+    render plain: params[:parent].inspect
   end
 end
