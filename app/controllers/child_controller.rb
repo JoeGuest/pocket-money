@@ -3,19 +3,15 @@ class ChildController < ApplicationController
   end
   
   def store
-    
+    @child = Child.new(child_params)
+    @child.parent_id = session[:user_id]
+    @child.save
+    redirect_to '/dashboard'
   end
   
-  def summary
-    
-  end
-  
-  def transaction
-    
-  end
-  
-  def balance
-    
+  private
+  def child_params
+    params.require(:child).permit(:name)
   end
   
 end
