@@ -13,8 +13,8 @@
         <td><%= child.name %></td>
         <td>balance</td>
         <td>
-          <%= link_to 'Activity', '/child/#{child.id}/summary' %> |
-          <%= link_to 'Add/Subtract', '/child/#{child.id}/transaction' %>
+          <%= link_to 'Activity', controller: 'child', action: 'summary', id: child.id %> |
+          <%= link_to 'Add/Subtract', controller: 'child', action: 'transaction', id: child.id %>
         </td>
       </tr>
       <% end %>
