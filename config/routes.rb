@@ -1,4 +1,24 @@
 Rails.application.routes.draw do
+  
+  root 'welcome#index'
+  
+  #Parent routes
+  post '/login', to: 'parent#login'
+  get '/register', to: 'parent#create'
+  post '/parent', to: 'parent#store'
+  
+  get '/dashboard', to: 'dashboard#index'
+
+  #Child routes
+  get 'child/create'
+  post '/child', to: 'child#store'
+  get '/child/:id/summary', to: 'child#summary'
+  get '/child/:id/transaction', to: 'child#transaction'
+  get '/child/:id/balance', to: 'child#balance'
+  
+  #Transaction routes
+  post '/transaction', to: 'transaction#store'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
