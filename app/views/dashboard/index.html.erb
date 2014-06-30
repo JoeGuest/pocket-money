@@ -11,7 +11,7 @@
       <% @children.each do |child| %>
       <tr>
         <td><%= child.name %></td>
-        <td>balance</td>
+        <td><%= number_to_currency(child.balance, unit: '£') %></td>
         <td>
           <%= link_to 'Activity', controller: 'child', action: 'summary', id: child.id %> |
           <%= link_to 'Add/Subtract', controller: 'child', action: 'transaction', id: child.id %>

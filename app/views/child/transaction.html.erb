@@ -1,0 +1,27 @@
+<%= form_for :transaction, url: '/transaction' do |f| %>
+  
+  <p>
+    <%= f.label :child_id %><br>
+    <%= f.select(:child_id, options_for_select(@child_array, @child_id)) %>
+  </p>
+
+  <p>
+    <%= f.label :action %><br>
+    <%= f.select(:action, ['Subtract', 'Add']) %>
+  </p>
+
+  <p>
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </p>
+
+  <p>
+    <%= f.label :amount %><br>
+    <%= f.text_field :amount %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
