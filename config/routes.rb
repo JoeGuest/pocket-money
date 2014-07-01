@@ -11,12 +11,12 @@ Rails.application.routes.draw do
 
   #Child routes
   get 'child/create'
-  post '/child', to: 'child#store'
+  post '/child/create', to: 'child#store'
   get '/child/:id/summary', to: 'child#summary'
-  get '/child/:id/transaction', to: 'child#transaction'
   get '/child/:id/balance', to: 'child#balance'
   
   #Transaction routes
+  get '/transaction', to: 'transaction#create'
   post '/transaction', to: 'transaction#store'
 
   # The priority is based upon order of creation: first created -> highest priority.

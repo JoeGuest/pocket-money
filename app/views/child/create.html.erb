@@ -1,4 +1,11 @@
-<%= form_for :child, url: '/child' do |f| %>
+<%= form_for :child, url: '/child/create' do |f| %>
+<% if @child && @child.errors.any? %>
+  <ul>
+  <% @child.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+<% end %>
   <p>
     <%= f.label :name %><br>
     <%= f.text_field :name %>

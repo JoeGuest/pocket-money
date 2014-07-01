@@ -1,4 +1,6 @@
 class Child < ActiveRecord::Base
+  validates :name, presence: true
+  validates :parent_id, presence: true
   
   def balance
     transactions = Transaction.where(child_id: self.id)

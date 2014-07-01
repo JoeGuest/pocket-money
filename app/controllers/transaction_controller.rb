@@ -1,12 +1,27 @@
 class TransactionController < ApplicationController
+  def create
+    @child_id = params[:child_id]
+    @child_array = child_array
+  end
+  
   def store
     @transaction = Transaction.new(transaction_params)
-    @transaction.save
-    redirect_to '/dashboard'
+    if @transaction.save
+      redirect_to '/dashboard', alert: "Transaction saved"
+    else
+      @child_array = child_array
+      render 'create'
+    end
   end
   
   private
     def transaction_params
       params.require(:transaction).permit(:child_id, :action, :description, :amount)
     end
+  
+    def child_array
+      array = Child.where(parent_id: session[:user_id])
+      return array.map { |child| [child.name, child.id] }
+    end
+  
 end

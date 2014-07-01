@@ -1,3 +1,4 @@
+Balance: <%= number_to_currency(@child.balance, unit: '£') %>
 <table>
   <thead>
     <tr>
@@ -11,8 +12,7 @@
       <tr>
         <td><%= transaction.description %></td>
         <td>
-          <%= transaction.action == 'Add' ? '+' : '-' %>
-          £<%= transaction.amount %>
+          <%= number_to_currency(transaction.amount, unit: '£') %>
         </td>
         <td><%= transaction.created_at %></td>
       </tr>

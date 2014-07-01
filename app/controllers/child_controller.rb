@@ -5,18 +5,16 @@ class ChildController < ApplicationController
   def store
     @child = Child.new(child_params)
     @child.parent_id = session[:user_id]
-    @child.save
-    redirect_to '/dashboard'
-  end
-  
-  def transaction
-    @child_id = params[:id]
-    @child_array = Child.where(parent_id: session[:user_id])
-    @child_array = @child_array.map { |child| [child.name, child.id] }
+    if @child.save
+      redirect_to '/dashboard', alert: "Child added"
+    else
+      render 'create'
+    end
   end
   
   def summary
     @child_id = params[:id]
+    @child = Child.find(@child_id)
     @transactions = Transaction.where(child_id: @child_id)
   end
   
@@ -26,3 +24,4 @@ class ChildController < ApplicationController
   end
   
 end
+

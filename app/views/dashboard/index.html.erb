@@ -1,3 +1,4 @@
+<%= flash[:alert] %>
 <% if @children.length > 0 %>
   <table>
     <thead>
@@ -14,7 +15,7 @@
         <td><%= number_to_currency(child.balance, unit: '£') %></td>
         <td>
           <%= link_to 'Activity', controller: 'child', action: 'summary', id: child.id %> |
-          <%= link_to 'Add/Subtract', controller: 'child', action: 'transaction', id: child.id %>
+          <%= link_to 'Add/Subtract', controller: 'transaction', action: 'create', child_id: child.id %>
         </td>
       </tr>
       <% end %>

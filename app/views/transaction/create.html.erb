@@ -1,5 +1,13 @@
 <%= form_for :transaction, url: '/transaction' do |f| %>
-  
+
+<% if @transaction && @transaction.errors.any? %>
+  <ul>
+  <% @transaction.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+<% end %>
+
   <p>
     <%= f.label :child_id %><br>
     <%= f.select(:child_id, options_for_select(@child_array, @child_id)) %>
