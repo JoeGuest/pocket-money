@@ -1,5 +1,5 @@
 <%= form_for :parent, url: '/login' do |f| %>
-
+  <%= flash[:alert] %>
   <p>
     <%= f.label :email %><br>
     <%= f.text_field :email %>
@@ -14,3 +14,4 @@
     <%= f.submit :login %>
   </p>
 <% end %>
+<p>Don't have a login? <%= link_to 'Register here', '/register' %></p>

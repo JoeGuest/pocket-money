@@ -1,14 +1,16 @@
 class TransactionController < ApplicationController
   def create
     @child_id = params[:child_id]
+    @child = Child.find(@child_id)
     @child_array = child_array
   end
   
   def store
     @transaction = Transaction.new(transaction_params)
-    if @transaction.save
+    if Child.exists?(id: transaction_params[:child_id], parent_id: session[:user_id]) && @transaction.save
       redirect_to '/dashboard', alert: "Transaction saved"
     else
+      @child = Child.find(transaction_params[:child_id])
       @child_array = child_array
       render 'create'
     end

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   #Parent routes
   post '/login', to: 'parent#login'
   get '/register', to: 'parent#create'
-  post '/parent', to: 'parent#store'
+  post '/register', to: 'parent#store'
   
   get '/dashboard', to: 'dashboard#index'
 

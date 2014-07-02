@@ -11,6 +11,7 @@
   <p>
     <%= f.label :child_id %><br>
     <%= f.select(:child_id, options_for_select(@child_array, @child_id)) %>
+    <span id="child-balance">Balance: <%= number_to_currency(@child.balance, unit: '£') %></span>
   </p>
 
   <p>
@@ -32,4 +33,12 @@
     <%= f.submit %>
   </p>
 <% end %>
+<script>
+  $('#transaction_child_id').change(function () {
+    var id = $(this).val();
+    $.get('/child/'+id+'/balance', function (balance) {
+      $('#child-balance').html('Balance: ' + balance);
+    });
+  });
+</script>
 

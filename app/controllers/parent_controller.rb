@@ -1,11 +1,13 @@
 class ParentController < ApplicationController
+  skip_before_action :require_login
+  
   def login
     parent = Parent.find_by(email: parent_params['email'])
     if parent && parent.authenticate(parent_params['password'])
       session[:user_id] = parent.id
       redirect_to '/dashboard'
     else
-      redirect_to '/'
+      redirect_to '/', alert: 'invalid email or password'
     end
   end
   
@@ -15,8 +17,11 @@ class ParentController < ApplicationController
   
   def store
     @parent = Parent.new(parent_params)
-    @parent.save
-    redirect_to '/'
+    if @parent.save
+      redirect_to '/', alert: "You have registered, please login below."
+    else
+      render 'create'
+    end
   end
   
   private
