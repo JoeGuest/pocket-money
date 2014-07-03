@@ -1,6 +1,6 @@
 <%= form_for :parent, url: '/register' do |f| %>
   <% if @parent && @parent.errors.any? %>
-    <ul>
+    <ul class="alert alert-danger">
       <% @parent.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
@@ -27,6 +27,6 @@
   </p>
  
   <p>
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-primary' %>
   </p>
 <% end %>

@@ -1,7 +1,7 @@
 <%= form_for :transaction, url: '/transaction' do |f| %>
 
 <% if @transaction && @transaction.errors.any? %>
-  <ul>
+  <ul class="alert alert-danger">
   <% @transaction.errors.full_messages.each do |msg| %>
     <li><%= msg %></li>
   <% end %>
@@ -30,7 +30,7 @@
   </p>
  
   <p>
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-primary' %>
   </p>
 <% end %>
 <script>

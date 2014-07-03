@@ -1,17 +1,23 @@
-<%= form_for :parent, url: '/login' do |f| %>
-  <%= flash[:alert] %>
-  <p>
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </p>
+<div class="well">
+  <%= form_for :parent, url: '/login' do |f| %>
+    <% if flash[:alert] %>
+      <div class="alert alert-danger">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+    <p>
+      <%= f.label :email %><br>
+      <%= f.text_field :email %>
+    </p>
 
-  <p>
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </p>
- 
-  <p>
-    <%= f.submit :login %>
-  </p>
-<% end %>
-<p>Don't have a login? <%= link_to 'Register here', '/register' %></p>
+    <p>
+      <%= f.label :password %><br>
+      <%= f.password_field :password %>
+    </p>
+
+    <p>
+      <%= f.submit :login, class: 'btn btn-primary' %>
+    </p>
+  <% end %>
+  <p>Don't have a login? <%= link_to 'Register here', '/register' %></p>
+</div>

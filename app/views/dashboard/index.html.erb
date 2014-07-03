@@ -1,6 +1,10 @@
-<%= flash[:alert] %>
+<% if flash[:alert] %>
+  <div class="alert alert-info">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
 <% if @children.length > 0 %>
-  <table>
+  <table class="table">
     <thead>
       <tr>
         <th>Child</th>
@@ -24,4 +28,4 @@
 <% else %>
   <p>You have no children</p>
 <% end %>
-<%= link_to 'Add Child', '/child/create' %>
+<%= link_to 'Add Child', '/child/create', class: 'btn btn-primary' %>
